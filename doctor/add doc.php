@@ -14,7 +14,7 @@ if(isset($_GET['cha'])){
 }
 if ($_SERVER ['REQUEST_METHOD']  == "POST") {
 if(isset($_POST['send'])){
-  $name = $_POST['Name'];
+  $name = $_POST['name'];
   $email = $_POST['email'];
 $category_id = $_POST['category_id'];
 $insert = "INSERT INTO `doctor` VALUES(null,'$name','$email',$category_id)";
@@ -38,11 +38,11 @@ if (isset($_GET['edit'])) {
     $select = "SELECT * from `doctor` where id = $id";
     $ss = mysqli_query($conn,$select);
     $row = mysqli_fetch_assoc($ss);
-    $name = $row['Name'];
+    $name = $row['name'];
     $email = $row['email'];
     $category_id = $row['category_id'];
 if (isset($_POST['update'])) {
-    $name = $_POST['Name'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $category_id = $_POST['category_id'];
     $update= "UPDATE `doctor` SET `name` = $name,`email` = $email, `category_id` = $category_id where `id` = $id";
@@ -75,7 +75,7 @@ $cat= mysqli_query($conn , $select);
 				<h2 class="text-uppercase text-center mb-5">Create an account</h2>
 				  <div class="form-outline mb-4">
             <form method="POST">
-					<input type="text" id="form3Example1cg" value="<?php echo $name ?>" name="Name"  class="form-control form-control-lg" placeholder="Your Name">
+					<input type="text" id="form3Example1cg" value="<?php echo $name ?>" name="name"  class="form-control form-control-lg" placeholder="Your Name">
 				  <div class="form-outline mb-4">
 					<input type="email" id="form3Example4cg" value="<?php echo $email ?>" name="email" class="form-control form-control-lg" placeholder="email">
 				  </div>

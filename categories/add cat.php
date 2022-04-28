@@ -16,7 +16,7 @@ $name = '';
 $update = false;
 if ($_SERVER ['REQUEST_METHOD']  == "POST") {
 if(isset($_POST['send'])){
-  $name = $_POST['Name'];
+  $name = $_POST['name'];
 $insert = "INSERT INTO `categories` VALUES(null,'$name')";
 $i = mysqli_query($conn , $insert);
 testMessage($i, "Insert categories");
@@ -33,10 +33,10 @@ if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
     $select = "SELECT * from `categories` where id = $id";
     $ss = mysqli_query($conn,$select);
-    $data = mysqli_fetch_assoc($ss);
-    $name = $data['Name'];
+    $row = mysqli_fetch_assoc($ss);
+    $name = $row['name'];
 if (isset($_POST['update'])) {
-    $name = $_POST['Name'];
+    $name = $_POST['name'];
     $update= "UPDATE `categories` SET `name` = $name where `id` = $id";
     $u= mysqli_query($conn , $update);
 
@@ -65,7 +65,7 @@ if (isset($_POST['update'])) {
 				<h2 class="text-uppercase text-center mb-5">Create Categories</h2>
 				  <div class="form-outline mb-4">
             <form method="POST">
-					<input type="text" id="form3Example1cg" name="Name"  class="form-control form-control-lg" placeholder="Categories">
+					<input type="text" id="form3Example1cg" name="name"  class="form-control form-control-lg" placeholder="Categories">
 				  <div class="d-flex justify-content-center">
                       <?php if($update):?>
 					<button type="button" name="update" class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">Update Data</button><br>
