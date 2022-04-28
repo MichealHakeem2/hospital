@@ -35,8 +35,8 @@ $s= mysqli_query($conn , $select);
       <tr>
         <td> <?php echo $data['id'] ?> </td>
         <td> <?php echo $data['name'] ?> </td>
-        <td><a onclick="return confirm('Are You Sure ? ')" name="delete" href="list cat.php?delete=<?php echo $data['id']?>" class="btn btn-danger">Delete</a></td><br>
-        <td><a  name="edit" href="list cat.php?edit=<?php echo $data['id']?>" class="btn btn-info">Edit</a></td>
+        <td><a onclick="return confirm('Are You Sure ? ')" name="delete" href="/list cat.php?delete=<?php echo $data['id']?>" class="btn btn-danger">Delete</a></td><br>
+        <td><a  name="edit" href="/tryy/categories/add cat.php?edit=<?php echo $data['id']?>" class="btn btn-info">Edit</a></td>
       </tr>
       <?php };?>
     </table>

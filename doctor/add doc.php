@@ -12,10 +12,6 @@ if(isset($_GET['cha'])){
     $u= mysqli_query($conn , $update);
     header('location: /tryy/doctor/add doc.php');
 }
-$name = '';
-$email = '';
-$category_id = '';
-$update = false;
 if ($_SERVER ['REQUEST_METHOD']  == "POST") {
 if(isset($_POST['send'])){
   $name = $_POST['Name'];
@@ -32,15 +28,19 @@ if (isset($_GET['delete'])) {
     $d= mysqli_query($conn , $delete);
 
 }
+$name = '';
+$email = '';
+$category_id = '';
+$update = false; 
 if (isset($_GET['edit'])) {
     $update = true;
     $id = $_GET['edit'];
     $select = "SELECT * from `doctor` where id = $id";
     $ss = mysqli_query($conn,$select);
-    $data = mysqli_fetch_assoc($ss);
-    $name = $data['Name'];
-    $email = $data['email'];
-    $category_id = $data['category_id'];
+    $row = mysqli_fetch_assoc($ss);
+    $name = $row['Name'];
+    $email = $row['email'];
+    $category_id = $row['category_id'];
 if (isset($_POST['update'])) {
     $name = $_POST['Name'];
     $email = $_POST['email'];
@@ -59,8 +59,12 @@ $cat= mysqli_query($conn , $select);
 <a href="/tryy/doctor/add doc.php?change=2" name="cha" class="btn btn-light">Light mood</a>
 <?php endif ; ?>
     <div class="home">
-        <h1 class="display-1 text-center text-info">Add Doctors</h1>
-    </div>
+    <?php if($update):?>
+    <h1 class="display-1 text-center text-info">Add Doctors</h1>
+    <?php else :?>
+    <h1 class="display-1 text-center text-info">Update Doctors</h1>
+    <?php endif; ?>
+  </div>
     <section class="vh-100 bg-image w-800">
 	<div class="mask d-flex align-items-center h-100 gradient-custom-3">
 	  <div class="container h-100">
@@ -71,12 +75,12 @@ $cat= mysqli_query($conn , $select);
 				<h2 class="text-uppercase text-center mb-5">Create an account</h2>
 				  <div class="form-outline mb-4">
             <form method="POST">
-					<input type="text" id="form3Example1cg" name="Name"  class="form-control form-control-lg" placeholder="Your Name">
+					<input type="text" id="form3Example1cg" value="<?php echo $name ?>" name="Name"  class="form-control form-control-lg" placeholder="Your Name">
 				  <div class="form-outline mb-4">
-					<input type="email" id="form3Example4cg" name="email" class="form-control form-control-lg" placeholder="email">
+					<input type="email" id="form3Example4cg" value="<?php echo $email ?>" name="email" class="form-control form-control-lg" placeholder="email">
 				  </div>
 				  <div class="form-outline mb-4">
-                 <select name="category_id" id="form3Example4cg" class="form-control form-control-lg">
+                 <select value="<?php echo $category_id ?>" name="category_id" id="form3Example4cg" class="form-control form-control-lg">
                    <?php foreach($cat as $data){ ?>
                     <option value="<?php echo $data['id']; ?>"> <?php echo $data['name']; ?> </option>
                     <?php } ?>
