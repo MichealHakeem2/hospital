@@ -60,9 +60,9 @@ $cat= mysqli_query($conn , $select);
 <?php endif ; ?>
     <div class="home">
     <?php if($update):?>
-    <h1 class="display-1 text-center text-info">Add Doctors</h1>
-    <?php else :?>
     <h1 class="display-1 text-center text-info">Update Doctors</h1>
+    <?php else :?>
+    <h1 class="display-1 text-center text-info">Add Doctors</h1>
     <?php endif; ?>
   </div>
     <section class="vh-100 bg-image w-800">

@@ -49,7 +49,11 @@ if (isset($_POST['update'])) {
 <a href="/tryy/categories/add cat.php?change=2" name="cha" class="btn btn-light">Light mood</a>
 <?php endif ; ?>
     <div class="home">
-        <h1 class="display-1 text-center text-info">Add Categories</h1>
+        <?php if($update):?>
+    <h1 class="display-1 text-center text-info">Update Categories</h1>
+    <?php else :?>
+    <h1 class="display-1 text-center text-info">Add Categories</h1>
+    <?php endif; ?>
     </div>
     <section class="vh-100 bg-image w-800">
 	<div class="mask d-flex align-items-center h-100 gradient-custom-3">
