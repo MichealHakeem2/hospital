@@ -53,10 +53,10 @@ if (isset($_POST['update'])) {
 $select= "SELECT * from `categories`";
 $cat= mysqli_query($conn , $select);
 ?>
-<?php if($noc == '1') :?>
-<a href="/tryy/doctor/add doc.php?change=1" name="cha" class="btn btn-dark">Dark mood</a>
+<?php if($noc == '2') :?>
+<a href="/tryy/doctor/add doc.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-dark">Dark mood</a>
 <?php else : ?>
-<a href="/tryy/doctor/add doc.php?change=2" name="cha" class="btn btn-light">Light mood</a>
+<a href="/tryy/doctor/add doc.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-light">Light mood</a>
 <?php endif ; ?>
     <div class="home">
     <?php if($update):?>
@@ -88,9 +88,9 @@ $cat= mysqli_query($conn , $select);
                    </div>
 				  <div class="d-flex justify-content-center">
                       <?php if($update):?>
-					<button type="button" name="update" class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">Update Data</button><br>
+					<button type="submit" name="update" class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">Update Data</button><br>
 					<?php else :?>
-                    <button type="button" name="send" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Send Data</button>
+                    <button type="submit" name="send" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Send Data</button>
 				 <?php endif; ?>
                 </div>
 				</form>

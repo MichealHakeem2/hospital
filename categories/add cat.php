@@ -3,7 +3,7 @@ include '../shared/nav.php';
 include '../genral/env.php';
 include '../genral/function.php';
 $select= "SELECT * from `theem`";
-$s= mysqli_query($conn , $select);
+$s = mysqli_query($conn , $select);
 $row = mysqli_fetch_assoc($s);
 $noc = $row['color'];
 if(isset($_GET['cha'])){
@@ -14,14 +14,16 @@ if(isset($_GET['cha'])){
 }
 $name = '';
 $update = false;
-if ($_SERVER ['REQUEST_METHOD']  == "POST") {
+
+// if ($_SERVER ['REQUEST_METHOD']  == "POST") {
+
 if(isset($_POST['send'])){
   $name = $_POST['name'];
 $insert = "INSERT INTO `categories` VALUES(null,'$name')";
 $i = mysqli_query($conn , $insert);
 testMessage($i, "Insert categories");
 }
-}
+// }
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $delete= "DELETE from `categories` where `id` = $id";
@@ -43,10 +45,10 @@ if (isset($_POST['update'])) {
 }
 }
 ?>
-<?php if($noc == '1') :?>
-<a href="/tryy/categories/add cat.php?change=1" name="cha" class="btn btn-dark">Dark mood</a>
+<?php if($noc == '2') :?>
+<a href="/tryy/categories/add cat.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-dark">Dark mood</a>
 <?php else : ?>
-<a href="/tryy/categories/add cat.php?change=2" name="cha" class="btn btn-light">Light mood</a>
+<a href="/tryy/categories/add cat.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-light">Light mood</a>
 <?php endif ; ?>
     <div class="home">
         <?php if($update):?>
@@ -70,7 +72,7 @@ if (isset($_POST['update'])) {
                       <?php if($update):?>
 					<button type="button" name="update" class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">Update Data</button><br>
 					<?php else :?>
-                    <button type="button" name="send" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Send Data</button>
+                    <button type="submit" name="send" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Send Data</button>
 				 <?php endif; ?>
                 </div>
 				</form>

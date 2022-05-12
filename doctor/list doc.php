@@ -13,11 +13,31 @@ if(isset($_GET['cha'])){
 }
 $select= "SELECT doctor.id as docID, doctor.name as docName, doctor.email as docEmail, categories.name as docCategory FROM `doctor` JOIN `categories` ON doctor.category_id = categories.id";
 $s= mysqli_query($conn , $select);
+if (isset($_GET['delete'])) {
+  $id = $_GET['delete'];
+  $delete= "DELETE from `categories` where `id` = $id";
+  $d= mysqli_query($conn , $delete);
+
+}
+if (isset($_GET['edit'])) {
+  $update = true;
+  $id = $_GET['edit'];
+  $select = "SELECT * from `categories` where id = $id";
+  $ss = mysqli_query($conn,$select);
+  $row = mysqli_fetch_assoc($ss);
+  $name = $row['name'];
+if (isset($_POST['update'])) {
+  $name = $_POST['name'];
+  $update= "UPDATE `categories` SET `name` = $name where `id` = $id";
+  $u= mysqli_query($conn , $update);
+
+}
+}
 ?>
-<?php if($noc == '1') :?>
-<a href="/tryy/doctor/list doc.php?change=1" name="cha" class="btn btn-dark">Dark mood</a>
+<?php if($noc == '2') :?>
+<a href="/tryy/doctor/list doc.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-dark">Dark mood</a>
 <?php else : ?>
-<a href="/tryy/doctor/list doc.php?change=2" name="cha" class="btn btn-light">Light mood</a>
+<a href="/tryy/doctor/list doc.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-light">Light mood</a>
 <?php endif ; ?>
     <div class="home">
         <h1 class="display-1 text-center text-info">Doctors List</h1>

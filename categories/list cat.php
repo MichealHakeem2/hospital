@@ -11,13 +11,32 @@ if(isset($_GET['cha'])){
     $u= mysqli_query($conn , $update);
     header('location: /tryy/categories/list cat.php');
 }
-$select= "SELECT * from `doctor`";
+$select= "SELECT * from `categories`";
 $s= mysqli_query($conn , $select);
+if (isset($_GET['delete'])) {
+  $id = $_GET['delete'];
+  $delete= "DELETE from `categories` where `id` = $id";
+  $d= mysqli_query($conn , $delete);
+
+}
+if (isset($_GET['edit'])) {
+  $update = true;
+  $id = $_GET['edit'];
+  $select = "SELECT * from `categories` where id = $id";
+  $ss = mysqli_query($conn,$select);
+  $row = mysqli_fetch_assoc($ss);
+  $name = $row['name'];
+if (isset($_POST['update'])) {
+  $name = $_POST['name'];
+  $update= "UPDATE `categories` SET `name` = $name where `id` = $id";
+  $u= mysqli_query($conn , $update);
+}
+}
 ?>
 <?php if($noc == '1') :?>
-<a href="/tryy/categories/list cat.php?change=1" name="cha" class="btn btn-dark">Dark mood</a>
+<a href="/tryy/categories/list cat.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-dark">Dark mood</a>
 <?php else : ?>
-<a href="/tryy/categories/list cat.php?change=2" name="cha" class="btn btn-light">Light mood</a>
+<a href="/tryy/categories/list cat.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-light">Light mood</a>
 <?php endif ; ?>
     <div class="home">
         <h1 class="display-1 text-center text-info">categories List</h1>
@@ -35,7 +54,7 @@ $s= mysqli_query($conn , $select);
       <tr>
         <td> <?php echo $data['id'] ?> </td>
         <td> <?php echo $data['name'] ?> </td>
-        <td><a onclick="return confirm('Are You Sure ? ')" name="delete" href="/list cat.php?delete=<?php echo $data['id']?>" class="btn btn-danger">Delete</a></td><br>
+        <td><a onclick="return confirm('Are You Sure ? ')" name="delete" href="/tryy/categories/list cat.php?delete=<?php echo $data['id']?>" class="btn btn-danger">Delete</a></td><br>
         <td><a  name="edit" href="/tryy/categories/add cat.php?edit=<?php echo $data['id']?>" class="btn btn-info">Edit</a></td>
       </tr>
       <?php };?>
