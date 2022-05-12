@@ -13,7 +13,7 @@ if(isset($_GET['cha'])){
     header('location: /tryy/index.php');
 }
 ?>
-<?php if($noc == '2') :?>
+<?php if($noc == '1') :?>
 <button href="/tryy/index.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-dark">Dark mood</button>
 <?php else : ?>
 <button href="/tryy/index.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-light">Light mood</button>

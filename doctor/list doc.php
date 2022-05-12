@@ -34,7 +34,7 @@ if (isset($_POST['update'])) {
 }
 }
 ?>
-<?php if($noc == '2') :?>
+<?php if($noc == '1') :?>
 <a href="/tryy/doctor/list doc.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-dark">Dark mood</a>
 <?php else : ?>
 <a href="/tryy/doctor/list doc.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-light">Light mood</a>
