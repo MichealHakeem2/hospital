@@ -45,10 +45,10 @@ if (isset($_POST['update'])) {
 }
 }
 ?>
-<?php if($noc == '1') :?>
-<a href="/tryy/categories/add cat.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-dark">Dark mood</a>
+<?php if($noc == '1') : ?>
+<a href="/tryy/categories/add cat.php?cha=2" name="cha" class="btn btn-dark">Dark mood</a>
 <?php else : ?>
-<a href="/tryy/categories/add cat.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-light">Light mood</a>
+<a href="/tryy/categories/add cat.php?cha=1" name="cha" class="btn btn-light">Light mood</a>
 <?php endif ; ?>
     <div class="home">
         <?php if($update):?>
@@ -67,10 +67,14 @@ if (isset($_POST['update'])) {
 				<h2 class="text-uppercase text-center mb-5">Create Categories</h2>
 				  <div class="form-outline mb-4">
             <form method="POST">
+              <?php if ($update) : ?>
+					<input type="text" id="form3Example1cg" name="name"  class="form-control form-control-lg" value="<?php echo $name ?>">
+              <?php else :?>
 					<input type="text" id="form3Example1cg" name="name"  class="form-control form-control-lg" placeholder="Categories">
+          <?php endif ; ?>
 				  <div class="d-flex justify-content-center">
                       <?php if($update):?>
-					<button type="button" name="update" class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">Update Data</button><br>
+					<button type="submit" name="update" class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">Update Data</button>
 					<?php else :?>
                     <button type="submit" name="send" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Send Data</button>
 				 <?php endif; ?>

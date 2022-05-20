@@ -53,10 +53,10 @@ if (isset($_POST['update'])) {
 $select= "SELECT * from `categories`";
 $cat= mysqli_query($conn , $select);
 ?>
-<?php if($noc == '1') :?>
-<a href="/tryy/doctor/add doc.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-dark">Dark mood</a>
+<?php if($noc == '1') : ?>
+<a href="/tryy/doctor/add doc.php?cha=2" name="cha" class="btn btn-dark">Dark mood</a>
 <?php else : ?>
-<a href="/tryy/doctor/add doc.php?cha=<?php echo $data['color']?>" type="submit" name="cha" class="btn btn-light">Light mood</a>
+<a href="/tryy/doctor/add doc.php?cha=1" name="cha" class="btn btn-light">Light mood</a>
 <?php endif ; ?>
     <div class="home">
     <?php if($update):?>
